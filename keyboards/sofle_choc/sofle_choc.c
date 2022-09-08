@@ -15,7 +15,6 @@
  */
 
 #include "sofle_choc.h"
-#include "encoder.c" // defenition of encoder actions happens in this file
 
 #ifdef RGB_MATRIX_ENABLE
 
@@ -75,7 +74,7 @@ led_config_t g_led_config = {
 #endif
 
 //was like this in standard config
-/*
+
 #ifdef ENCODER_ENABLE
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
@@ -101,4 +100,4 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 }
 
 #endif
-*/
+

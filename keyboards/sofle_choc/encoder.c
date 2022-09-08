@@ -1,4 +1,8 @@
 // Testing purpose of how to set encoder in via
+
+bool is_alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
+
 #ifdef ENCODER_ENABLE
 
 void matrix_scan_user(void) {

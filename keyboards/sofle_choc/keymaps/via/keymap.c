@@ -15,13 +15,6 @@
   */
 #include QMK_KEYBOARD_H
 
-// needed for alt super tab in windows system:
-
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
-
-// standard sofle config
-
 enum sofle_layers {
     _QWERTY,
     _LOWER,
@@ -129,6 +122,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
     )
 };
+
+bool is_alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -371,3 +367,12 @@ bool oled_task_user(void) {
 }
 
 #endif
+
+void matrix_scan_user(void) {
+  if (is_alt_tab_active) {
+    if (timer_elapsed(alt_tab_timer) > 1250) {
+      unregister_code(KC_LALT);
+      is_alt_tab_active = false;
+    }
+  }
+}

@@ -15,9 +15,11 @@
   */
 #include QMK_KEYBOARD_H
 
+// declare variables for alt super tab
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
+// hardcoded keypositions
 enum sofle_layers {
     _QWERTY,
     _LOWER,
@@ -368,6 +370,7 @@ bool oled_task_user(void) {
 
 #endif
 
+// moved from sofle_choc.c
 #ifdef ENCODER_ENABLE
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
@@ -376,14 +379,15 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     }
 
     if (index == 0) {   // index 0 corresponds to master encoder
+
+    // definition of volume for left encoder
         if (clockwise) {
-            // definition of volume
             tap_code(KC_VOLU);
         } else {
             tap_code(KC_VOLD);
         }
     } else {
-        //definition of alt super tab
+        //definition of alt super tab for right encoder
         if (clockwise) {
             if (!is_alt_tab_active) {
                 is_alt_tab_active = true;

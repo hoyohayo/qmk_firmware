@@ -73,7 +73,7 @@ led_config_t g_led_config = {
 
 #endif
 
-/* Not needed for alt super tab
+/* Not needed for alt super tab is setup at keymap.c
 #ifdef ENCODER_ENABLE
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
